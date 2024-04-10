@@ -1,9 +1,5 @@
 package poker
 
-import (
-	"fmt"
-)
-
 var table *lookupTable
 
 func init() {
@@ -24,7 +20,7 @@ func RankClass(rank int32) int32 {
 	}
 
 	if rank < 0 {
-		panic(fmt.Sprintf("rank %d is less than zero", rank))
+		return rank
 	}
 
 	for _, target := range targets {
@@ -33,7 +29,7 @@ func RankClass(rank int32) int32 {
 		}
 	}
 
-	panic(fmt.Sprintf("rank %d is unknown", rank))
+	return rank
 }
 
 func RankString(rank int32) string {
@@ -49,7 +45,7 @@ func Evaluate(cards []Card) int32 {
 	case 7:
 		return seven(cards...)
 	default:
-		panic("Only support 5, 6 and 7 cards.")
+		return 0
 	}
 }
 
