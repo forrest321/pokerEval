@@ -33,6 +33,11 @@ func RankClass(rank int32) int32 {
 }
 
 func RankString(rank int32) string {
+	//HACK: hardcoding royal flush here for now
+	//TODO: adjust ranks to return royal flush
+	if rank == 1 {
+		return "Royal Flush"
+	}
 	return rankClassToString[RankClass(rank)]
 }
 
